@@ -1,4 +1,5 @@
 var ITV = ITV || {};
+ITV.LOG = true;
 
 ITV.app = {
 
@@ -32,6 +33,12 @@ ITV.app = {
 
 	startupRequests: function() {
 		if(ITV.LOG) console.log("Starting requests...");
+
+		$.ajax({url: "/api/json/dotcom/programme/searchatoz/a"}).done(function( data ) {
+			if (ITV.LOG) {
+				console.log( "Sample of data:", data );
+			}
+		});
 
 	},
 
