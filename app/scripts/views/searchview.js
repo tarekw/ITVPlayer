@@ -1,4 +1,9 @@
-
+/*
+* This is the search view and currently the main view
+* of the application. The template it loads contains
+* input box for entering the search queries and also
+* the container for the search results.
+*/
 var SearchView = Backbone.View.extend({
 
 	searchTimer: null,
@@ -14,6 +19,7 @@ var SearchView = Backbone.View.extend({
 		this.template = $("#searchViewTemplate").html();
 	},
 
+	// overriding the base render to show custom template
 	render: function(eventName) {
 		var that = this;
 		if(ITV.LOG) console.log('SearchView.render');
@@ -23,9 +29,11 @@ var SearchView = Backbone.View.extend({
 		return this;
 	},
 
+	// initiate a search for the query term
 	startSearch: function() {
 		if(ITV.LOG) console.log('SearchView.startSearch');
 		if (!this.searchView) {
+			// instantiate the searchresultsview if it is not already created
 			this.searchView = new SearchResultsView({ collection: ITV.app.collections.searchCollection, el: '.resultArea' });
 		}
 
@@ -35,8 +43,8 @@ var SearchView = Backbone.View.extend({
 		}
 		this.searchTerm = $('input[id=searchField]').val();
 
-		this.clearSearch();
-		this.searchView.fetchSearchResults(this.searchTerm);
+		this.clearSearch();	// clear the view before populating it again
+		this.searchView.fetchSearchResults(this.searchTerm);	// ask the subview to fetch the results for us
 	},
 
 	clearSearch: function() {
@@ -58,7 +66,7 @@ var SearchView = Backbone.View.extend({
 	},
 
 	typingPaused: function () {
-		this.startSearch();
+		this.startSearch();	// timer expired, take the search term and call fetch
 	}
 });
 

@@ -1,20 +1,15 @@
-
+/*
+* Main view for handling the results from the collection. Every time
+* the collection is updated, we create the desired template item
+* and append it to the container of this view.
+*/
 var SearchResultsView = Backbone.View.extend({
-
-	events: {
-	},
 
 	initialize: function() {
 		if(ITV.LOG) console.log('SearchResultsView.initialize');
 		this.template = $("#searchItemTemplate").html();
 
-		this.collection.on("add", this.addResult, this);
-
-	},
-
-	render: function() {
-		if(ITV.LOG) console.log('SearchResultsView.render');
-		var that = this;
+		this.collection.on("add", this.addResult, this);	// listen for changes to the collection
 	},
 
 	fetchSearchResults: function(searchTerm) {
@@ -28,13 +23,15 @@ var SearchResultsView = Backbone.View.extend({
 
 		var searchSuccess = function() {
 			if(ITV.LOG) console.log('search success');
-			that.trigger("searchfinished");
+			that.trigger("searchfinished");	// this will be useful if we want to stop a spinner for example
 		};
 
 		var searchError = function() {
 			if(ITV.LOG) console.error('search error');
 		};
 
+		// ask the underlying collection to fetch the results. it could get the
+		// results from anywhere but we don't need to know
 		this.collection.fetch( {
 			success: searchSuccess,
 			error: searchError,
@@ -42,11 +39,10 @@ var SearchResultsView = Backbone.View.extend({
 		});
 	},
 
-
+	// handle changes in the collection
 	addResult: function(model) {
 		if(ITV.LOG) console.log('SearchResultsView.addResult ', model);
-		var data = model.toJSON();
-		this.$el.append(_.template(this.template,data));
+		this.$el.append(_.template(this.template,model.toJSON()));
 	}
 
 });

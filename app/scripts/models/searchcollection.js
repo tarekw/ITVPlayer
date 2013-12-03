@@ -1,14 +1,17 @@
+/*
+* The main collection for handling any search related queries.
+* It makes the request to the appropriate endpoint, parses and
+* cleans up the result and makes it available to any views that
+* require the information
+*/
 var SearchCollection = Backbone.Collection.extend({
 
 	lastJqXhr: null,
 	url: undefined,
 
-	initialize: function(options) {
-	},
-
 	fetch: function(options) {
 		if(ITV.LOG) console.log("SearchCollection fetch");
-		if(!options) (options = {});
+		if(!options) options = {};
 
 		var jqXhr = null;
 
@@ -21,12 +24,15 @@ var SearchCollection = Backbone.Collection.extend({
 		this.url = ITV.Constants.API_ENDPOINT + ITV.Constants.TARGET + "/" + ITV.Constants.PLATFORM + ITV.Constants.PROGRAM_ENDPOINT + options.searchTerm;
 
 		options.dataType="json";
-		jqXhr = Backbone.Collection.prototype.fetch.call(this, options);
+		jqXhr = Backbone.Collection.prototype.fetch.call(this, options);	// let the base class handle the request
 		this.lastJqXhr = jqXhr;
 
 		return jqXhr;
 	},
 
+	// parse the search results comming from the fetch request. this is
+	// automatically called by backbone. here we have the chance to clean
+	// up the response and provide only the necessary information to the view
 	parse: function(response, xhr, alreadyJson) {
 		if(ITV.LOG) console.log("SearchCollection parse", response);
 
@@ -35,6 +41,9 @@ var SearchCollection = Backbone.Collection.extend({
 			return;
 		}
 
+		// the Details array contains all the programme information
+		// TODO the result array might contain irrelevant data, we should
+		// check 'Key' to make sure it matches our search term
 		return response.Result[0].Details;
 	},
 
