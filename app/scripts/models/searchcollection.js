@@ -2,7 +2,7 @@ var SearchCollection = Backbone.Collection.extend({
 
 	lastJqXhr: null,
 	model: SearchModel,
-	url: "/api/json/dotcom/programme/searchatoz/a",
+	url: undefined,
 
 	initialize: function(options) {
 	},
@@ -19,6 +19,8 @@ var SearchCollection = Backbone.Collection.extend({
 			this.lastJqXhr.abort();
 		}
 
+		this.url = ITV.Constants.API_ENDPOINT + ITV.Constants.TARGET + "/" + ITV.Constants.PLATFORM + ITV.Constants.PROGRAM_ENDPOINT + options.searchTerm;
+		 
 		options.dataType="json";
 		jqXhr = Backbone.Collection.prototype.fetch.call(this, options);
 		this.lastJqXhr = jqXhr;
@@ -29,7 +31,7 @@ var SearchCollection = Backbone.Collection.extend({
 	parse: function(response, xhr, alreadyJson) {
 		if(ITV.LOG) console.log("SearchCollection parse", response);
 
-		if(!response) {
+		if(!response || !response.Result || response.Result.length === 0) {
 			if(ITV.LOG) console.log("No response.");
 			return;
 		}

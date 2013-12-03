@@ -17,8 +17,14 @@ var SearchResultsView = Backbone.View.extend({
 		var that = this;
 	},
 
-	fetchSearchResults: function() {
+	fetchSearchResults: function(searchTerm) {
 		var that = this;
+
+		if (!searchTerm || searchTerm.length === 0) {
+			if(ITV.LOG) console.log("Nothing to search");
+			return;
+		}
+		if(ITV.LOG) console.log("Searching for... ", searchTerm);
 
 		var searchSuccess = function() {
 			if(ITV.LOG) console.log('search success');
@@ -31,7 +37,8 @@ var SearchResultsView = Backbone.View.extend({
 
 		this.collection.fetch( {
 			success: searchSuccess,
-			error: searchError
+			error: searchError,
+			searchTerm: searchTerm
 		});
 	},
 
