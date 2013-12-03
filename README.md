@@ -3,7 +3,7 @@ ITVPlayer
 
 ## Description
 
-A sample JavaScript application for demonstrating some modern web development concepts. It is a simple application that loads a single page with an input box. As the user starts entering text in the box the app does queries against the mercury.itv.com api to retrieve the results for the search terms and display them in a list.
+ITVPlayer is a simple JavaScript application that loads a single page with an input box. As the user starts entering text in the box the app does queries against the mercury.itv.com api to retrieve the results for the search terms and display them in a list. This sample application aims to demonstrate some modern web development concepts:
 
 - HTML5, JavaScript, CSS
 - Demonstrable understanding of OOP concepts, separations of concerns, design patterns
