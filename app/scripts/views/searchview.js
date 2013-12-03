@@ -22,11 +22,10 @@ var SearchView = Backbone.View.extend({
 
 	startSearch: function() {
 		if(ITV.LOG) console.log('SearchView.startSearch');
-		this.collection.fetch( {
-			// success: loadSuccess,
-			// error: loadError,
-		});
-
+		if (!this.searchView) {
+			this.searchView = new SearchResultsView({ collection: ITV.app.collections.searchCollection, el: '#resultArea' });
+			this.searchView.fetchSearchResults();
+		}
 	},
 
 	clearSearch: function() {

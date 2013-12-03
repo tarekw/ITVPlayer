@@ -15,7 +15,7 @@ var SearchModel = Backbone.Model.extend({
 	},
 
 	parse: function(response, options) {
-		if(ITV.LOG) console.log("SearchModel parse", response);
+		// if(ITV.LOG) console.log("SearchModel parse", response);
 		var that = this;
 
 		if(!response) return;

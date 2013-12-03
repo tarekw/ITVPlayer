@@ -30,11 +30,6 @@
 
             <div id="SearchView" class=""></div>
 
-
-            <div class="footer">
-                <p>Copyright ITV</p>
-            </div>
-
         </div>
 
 
@@ -61,6 +56,7 @@
         <script src="scripts/models/searchmodel.js"></script>
         <script src="scripts/models/searchcollection.js"></script>
         <script src="scripts/views/searchview.js"></script>
+        <script src="scripts/views/searchresultsview.js"></script>
         <script src="scripts/router.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
@@ -88,6 +84,12 @@
                 <h3>This is the search view</h3>
                 <button class="search">Search</button>
             </div>
+            <div id="resultArea" class="">
+            </div>
+        </script>
+
+        <script type="text/html" id='searchItemTemplate'>
+            <div><%-Programme.Programme.Title%></div>
         </script>
 
 </body>

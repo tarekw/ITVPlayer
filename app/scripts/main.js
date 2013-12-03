@@ -14,7 +14,7 @@ ITV.app = {
 		};
 
 		this.views = {
-			searchView: new SearchView({collection: this.collections.searchCollection, el: '#SearchView'})
+			searchView: new SearchView({el: '#SearchView'})
 		};
 
 		this.router = new AppRouter(this);
