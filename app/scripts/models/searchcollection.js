@@ -6,45 +6,45 @@
 */
 var SearchCollection = Backbone.Collection.extend({
 
-	lastJqXhr: null,
-	url: undefined,
+    lastJqXhr: null,
+    url: undefined,
 
-	fetch: function(options) {
-		if(ITV.LOG) console.log("SearchCollection fetch");
-		if(!options) options = {};
+    fetch: function(options) {
+        if(ITV.LOG) console.log("SearchCollection fetch");
+        if(!options) options = {};
 
-		var jqXhr = null;
+        var jqXhr = null;
 
-		// ensure the previous request has been aborted if still active
-		if(this.lastJqXhr && this.lastJqXhr.readyState && this.lastJqXhr.readyState!=4) {
-			if(ITV.LOG) console.log("Last request aborted");
-			this.lastJqXhr.abort();
-		}
+        // ensure the previous request has been aborted if still active
+        if(this.lastJqXhr && this.lastJqXhr.readyState && this.lastJqXhr.readyState!=4) {
+            if(ITV.LOG) console.log("Last request aborted");
+            this.lastJqXhr.abort();
+        }
 
-		this.url = ITV.Constants.API_ENDPOINT + ITV.Constants.TARGET + "/" + ITV.Constants.PLATFORM + ITV.Constants.PROGRAM_ENDPOINT + options.searchTerm;
+        this.url = ITV.Urls.getSearchUrl(options.searchTerm);
 
-		options.dataType="json";
-		jqXhr = Backbone.Collection.prototype.fetch.call(this, options);	// let the base class handle the request
-		this.lastJqXhr = jqXhr;
+        options.dataType="json";
+        jqXhr = Backbone.Collection.prototype.fetch.call(this, options);    // let the base class handle the request
+        this.lastJqXhr = jqXhr;
 
-		return jqXhr;
-	},
+        return jqXhr;
+    },
 
-	// parse the search results comming from the fetch request. this is
-	// automatically called by backbone. here we have the chance to clean
-	// up the response and provide only the necessary information to the view
-	parse: function(response, xhr, alreadyJson) {
-		if(ITV.LOG) console.log("SearchCollection parse", response);
+    // parse the search results comming from the fetch request. this is
+    // automatically called by backbone. here we have the chance to clean
+    // up the response and provide only the necessary information to the view
+    parse: function(response, xhr, alreadyJson) {
+        if(ITV.LOG) console.log("SearchCollection parse", response);
 
-		if(!response || !response.Result || response.Result.length === 0) {
-			if(ITV.LOG) console.log("No response.");
-			return;
-		}
+        if(!response || !response.Result || response.Result.length === 0) {
+            if(ITV.LOG) console.log("No response.");
+            return;
+        }
 
-		// the Details array contains all the programme information
-		// TODO the result array might contain irrelevant data, we should
-		// check 'Key' to make sure it matches our search term
-		return response.Result[0].Details;
-	},
+        // the Details array contains all the programme information
+        // TODO the result array might contain irrelevant data, we should
+        // check 'Key' to make sure it matches our search term
+        return response.Result[0].Details;
+    },
 
 });
