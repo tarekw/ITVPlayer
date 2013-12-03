@@ -75,7 +75,7 @@
 
         <script type="text/html" id='searchViewTemplate'>
             <div class="header">
-                <input id="searchField" class="searchbox" type"text" placeholder="enter your search"></input>
+                <input id="searchField" class="searchbox form-control" type"text" placeholder="enter your search"></input>
             </div>
             <div class="resultArea">
             </div>
@@ -83,11 +83,11 @@
 
         <script type="text/html" id='searchItemTemplate'>
             <div class="programme-container">
-                <table class="table table-striped table-bordered">
+                <table class="table table-bordered table-hover">
                     <tr>
-                        <td><img src="<%-Programme.ImageUri%>"/></td>
+                        <td><img class="img-rounded" src="<%-Programme.ImageUri%>"/></td>
                         <td>
-                            <div><%-Programme.Programme.Title%></div>
+                            <b><%-Programme.Programme.Title%></b>
                             <div><%-Programme.ShortSynopsis%></div>
                         </td>
                     </tr>
