@@ -5,10 +5,6 @@ ITV.app = {
 	start: function() {
 		var that = this;
 
-		this.models = {
-			search: new SearchModel()
-		};
-
 		this.collections = {
 			searchCollection: new SearchCollection({})
 		};

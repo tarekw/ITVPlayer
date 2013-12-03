@@ -1,7 +1,6 @@
 var SearchCollection = Backbone.Collection.extend({
 
 	lastJqXhr: null,
-	model: SearchModel,
 	url: undefined,
 
 	initialize: function(options) {
@@ -20,7 +19,7 @@ var SearchCollection = Backbone.Collection.extend({
 		}
 
 		this.url = ITV.Constants.API_ENDPOINT + ITV.Constants.TARGET + "/" + ITV.Constants.PLATFORM + ITV.Constants.PROGRAM_ENDPOINT + options.searchTerm;
-		 
+
 		options.dataType="json";
 		jqXhr = Backbone.Collection.prototype.fetch.call(this, options);
 		this.lastJqXhr = jqXhr;
