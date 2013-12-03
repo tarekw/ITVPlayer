@@ -48,7 +48,6 @@
 
         <!-- build:js scripts/main.js -->
         <script src="scripts/constants.js"></script>
-        <script src="scripts/models/searchmodel.js"></script>
         <script src="scripts/models/searchcollection.js"></script>
         <script src="scripts/views/searchview.js"></script>
         <script src="scripts/views/searchresultsview.js"></script>
@@ -83,8 +82,18 @@
         </script>
 
         <script type="text/html" id='searchItemTemplate'>
-            <div><%-Programme.Programme.Title%></div>
+            <div class="programme-container">
+                <table>
+                    <tr>
+                        <td><img src="<%-Programme.ImageUri%>"/></td>
+                        <td>
+                            <div><%-Programme.Programme.Title%></div>
+                            <div><%-Programme.ShortSynopsis%></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </script>
 
-</body>
+    </body>
 </html>
