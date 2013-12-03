@@ -18,9 +18,18 @@ body {
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
-.footer {
+.footer,
+.resultArea {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.resultArea {
+    padding-top: 15px;
+}
+
+.searchbox {
+    width: 100%;
 }
 
 /* Custom page header */
@@ -29,11 +38,14 @@ body {
 }
 
 /* Make the masthead heading the same height as the navigation */
-.header h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
+.header {
     padding-bottom: 19px;
+
+    h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        line-height: 40px;
+    }
 }
 
 /* Custom page footer */
@@ -76,7 +88,8 @@ body {
     /* Remove the padding we set earlier */
     .header,
     .marketing,
-    .footer {
+    .footer,
+    .resultArea {
         padding-left: 0;
         padding-right: 0;
     }

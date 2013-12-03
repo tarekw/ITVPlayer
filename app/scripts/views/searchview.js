@@ -2,7 +2,7 @@
 var SearchView = Backbone.View.extend({
 
 	events: {
-		"click .search": "startSearch"
+		"keyup .searchbox": "startSearch"
 	},
 
 	initialize: function() {
@@ -23,7 +23,7 @@ var SearchView = Backbone.View.extend({
 	startSearch: function() {
 		if(ITV.LOG) console.log('SearchView.startSearch');
 		if (!this.searchView) {
-			this.searchView = new SearchResultsView({ collection: ITV.app.collections.searchCollection, el: '#resultArea' });
+			this.searchView = new SearchResultsView({ collection: ITV.app.collections.searchCollection, el: '.resultArea' });
 			this.searchView.fetchSearchResults();
 		}
 	},
