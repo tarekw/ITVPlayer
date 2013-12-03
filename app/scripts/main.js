@@ -1,5 +1,4 @@
 var ITV = ITV || {};
-ITV.LOG = true;
 
 ITV.app = {
 
@@ -7,18 +6,18 @@ ITV.app = {
 		var that = this;
 
 		this.models = {
-			// search: new SearchModel()
+			search: new SearchModel()
 		};
 
 		this.collections = {
-			// searchCollection: new SearchCollection(null, {})
+			searchCollection: new SearchCollection({})
 		};
 
 		this.views = {
-			// searchView: new SearchView({el: '#SearchView', template: '#searchTemplate'})
+			searchView: new SearchView({collection: this.collections.searchCollection, el: '#SearchView'})
 		};
 
-		// this.router = new AppRouter(this);
+		this.router = new AppRouter(this);
 
 		Backbone.history.start();
 
@@ -33,13 +32,6 @@ ITV.app = {
 
 	startupRequests: function() {
 		if(ITV.LOG) console.log("Starting requests...");
-
-		$.ajax({url: "/api/json/dotcom/programme/searchatoz/a"}).done(function( data ) {
-			if (ITV.LOG) {
-				console.log( "Sample of data:", data );
-			}
-		});
-
 	},
 
 };
