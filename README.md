@@ -5,7 +5,7 @@ ITVPlayer
 
 ITVPlayer is a simple JavaScript application that loads a single page with an input box. As the user starts entering text in the box the app does queries against the mercury.itv.com api to retrieve the results for the search terms and display them in a list. This sample application aims to demonstrate some modern web development concepts:
 
-- HTML5, JavaScript, CSS
+- HTML5, JavaScript, CSS3
 - Demonstrable understanding of OOP concepts, separations of concerns, design patterns
 - Maintainable/Testable code, TDD/BDD
 - Appropriate use of frameworks and bespoke code
@@ -17,13 +17,13 @@ This project has dependency on node (npm) and bower. To start, please install no
 
 ## Usage
 
-After the initial setup (explained above), a local dev server serving on http://localhost:9000 can then be started with the command **grunt serve**. A browser window should automatically open with the app running. If it doesn't, just point your browser to the above url and you're good to go.
+After the initial setup (explained above), a local dev server serving on http://localhost:9000 can then be started with the command **grunt serve**. A browser window should automatically open with the app running. If it doesn't, just point your browser to the above url and you're good to go. Search queries are made against actual api (at mercury.idv.com) and not a dummy server. This is made possible by the grunt connect proxy which allows us to get past browser security policies for our test purposes. If the code is modified, the browser will update automatically to reflect the change.
 
-To run the tests associated with the project, just run the command **grunt test**.
+To execute the tests associated with the project, just run the command **grunt test**.
 
 ## Technical Description
 
-ITVPlayer is be coded mostly using HTML5/Javascript/CSS3 using a set of tools/libraries described below:
+ITVPlayer is coded mostly in HTML5/JavaScript/CSS3 using a set of tools/libraries described below:
 * **Yeoman** : Generates the structure of the project
 * **Bower** : A dependency management too for web apps
 * **Grunt** : Builds/runs/tests the project
