@@ -7,13 +7,19 @@ ITVPlayer is a simple JavaScript application that loads a single page with an in
 
 - HTML5, JavaScript, CSS
 - Demonstrable understanding of OOP concepts, separations of concerns, design patterns
-- Maintainable/Testable code, TDD
+- Maintainable/Testable code, TDD/BDD
 - Appropriate use of frameworks and bespoke code
 - Package/Dependency management
 
 ## Important note
 
-This project has dependency on node (npm) and bower. To start, please install node and ruby (for compass) and execute the following commands: **npm install -g grunt-cli bower**, and then in the project directory: **npm install && bower install**
+This project has dependency on node (npm) and bower. To start, please install nodeJS (http://nodejs.org/download) and execute the following commands on a terminal/cmd prompt: **npm install -g grunt-cli bower**, and then in the project directory: **npm install && bower install**. This should download and install all the necessary dependencies into the project directory. Please note, these commands only need to be executed once.
+
+## Usage
+
+After the initial setup (explained above), a local dev server serving on http://localhost:9000 can then be started with the command **grunt serve**. A browser window should automatically open with the app running. If it doesn't, just point your browser to the above url and you're good to go.
+
+To run the tests associated with the project, just run the command **grunt test**.
 
 ## Technical Description
 
@@ -21,16 +27,24 @@ ITVPlayer is be coded mostly using HTML5/Javascript/CSS3 using a set of tools/li
 * **Yeoman** : Generates the structure of the project
 * **Bower** : A dependency management too for web apps
 * **Grunt** : Builds/runs/tests the project
-* **Backbone JS** : Javscript MVC Framework
+* **Backbone** : Javscript MVC Framework
 * **Underscore** : Templating/utility engine for Backbone
 * **jQuery** : A utility library used by many
 
-## Usage
+## Improvements
 
-A local dev server serving on http://localhost:9000 can then be started with **grunt serve**. To test the application, just point a browser to this url and you're good to go.
-
-## Todo
+* Add some more tests for validating the collection/model
+* Do some DOM testing with phantomJS
+* If project expands, might consider moving to a more composite application architecture
+* Test the grunt build scripts to build a package for deployment on the live server
+* Separate the templates from the index
+* Set up continuous integration (e.g. with Jenkins)
 
 ## Screenshots
 
 <img src="https://github.com/tarekw/ITVPlayer/raw/master/screenshots/chrome-firefox-ie.png"/>
+
+
+For any feedback/question, feel free to contact me: tarek@wahab.me.uk
+
+Thanks!

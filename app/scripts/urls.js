@@ -11,11 +11,26 @@ ITV.Urls = function() {
         // currently the only requied url. add more
         // getters here in the future when required
         getSearchUrl: function(searchTerm) {
-            return API_ENDPOINT +
-                   TARGET + "/" +
-                   PLATFORM +
-                   PROGRAM_ENDPOINT +
-                   searchTerm;
+          
+          // do some validity checks for the searchTerm
+          if (!searchTerm) {
+            throw "search term can only be a string";
+          } else if (searchTerm === '') {
+            throw "search term empty";
+          } else if (searchTerm.length > 100) {
+            throw "search term is too long";
+          } else if (typeof searchTerm !== 'string') {
+            throw "search term can only be a string";
+          } else if (searchTerm === '/') {
+            throw "search term cannot contain a forward slash";
+          }
+
+          // everything ok, return the url
+          return API_ENDPOINT +
+                 TARGET + "/" +
+                 PLATFORM +
+                 PROGRAM_ENDPOINT +
+                 searchTerm;
         }
     }
 }();

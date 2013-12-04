@@ -21,7 +21,12 @@ var SearchCollection = Backbone.Collection.extend({
             this.lastJqXhr.abort();
         }
 
-        this.url = ITV.Urls.getSearchUrl(options.searchTerm);
+        try {
+            this.url = ITV.Urls.getSearchUrl(options.searchTerm);
+        } catch (err) {
+            console.log("Error thrown: ", err);
+            return;
+        }
 
         options.dataType="json";
         jqXhr = Backbone.Collection.prototype.fetch.call(this, options);    // let the base class handle the request
