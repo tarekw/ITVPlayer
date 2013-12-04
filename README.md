@@ -17,7 +17,7 @@ This project has dependency on node (npm), grunt and bower. To start, please ins
 
 ## Usage
 
-After the initial setup (explained above), a local dev server serving on http://localhost:9000 can then be started with the command **grunt serve**. A browser window should automatically open with the app running. If it doesn't, just point your browser to the above url and you're good to go. Search queries are made against actual api (at mercury.idv.com) and not a dummy server. This is made possible by the grunt connect proxy which allows us to get past browser security policies for our test purposes. If the code is modified, the browser will update automatically to reflect the change.
+After the initial setup (explained above), a local dev server serving on http://localhost:9000 can then be started with the command **grunt serve**. A browser window should automatically open with the app running. If it doesn't, just point your browser to the above url and you're good to go. Search queries are made against actual api (at mercury.itv.com) and not a dummy server. This is made possible by the grunt connect proxy which allows us to get past browser security policies for our test purposes. If the code is modified, the browser will update automatically to reflect the change.
 
 To execute the tests associated with the project, just run the command **grunt test**.
 
