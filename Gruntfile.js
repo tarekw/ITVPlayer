@@ -77,11 +77,14 @@ module.exports = function (grunt) {
             },
             test: {
                 options: {
-                    base: [
-                        '.tmp',
-                        'test',
-                        '<%= yeoman.app %>'
-                    ]
+                    middleware: function (connect) {
+                        return [
+                          proxySnippet,
+                          mountFolder(connect, '.tmp'),
+                          mountFolder(connect, 'test'),
+                          mountFolder(connect, 'app')
+                        ];
+                    }
                 }
             },
             dist: {
@@ -338,6 +341,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test', [
         'clean:server',
+        'configureProxies',
         'concurrent:test',
         'autoprefixer',
         'connect:test',
