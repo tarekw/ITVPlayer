@@ -21,6 +21,8 @@ After the initial setup (explained above), a local dev server serving on http://
 
 To execute the tests associated with the project, just run the command **grunt test**.
 
+Please ensure git is installed in your path. Have tested the app on Windows 7 and Mac.
+
 ## Technical Description
 
 ITVPlayer is coded mostly in HTML5/JavaScript/CSS3 using a set of tools/libraries described below:
