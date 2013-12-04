@@ -33,4 +33,4 @@ A local dev server serving on http://localhost:9000 can then be started with **g
 
 ## Screenshots
 
-<img src="https://github.com/tarekw/ITVPlayer/raw/master/screenshots/chrome-firefox-ie.png" height="500px" />
+<img src="https://github.com/tarekw/ITVPlayer/raw/master/screenshots/chrome-firefox-ie.png"/>
