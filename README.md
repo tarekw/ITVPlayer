@@ -21,7 +21,7 @@ After the initial setup (explained above), a local dev server serving on http://
 
 To execute the tests associated with the project, just run the command **grunt test**.
 
-Project has been tested on Windows 7/8 and Mac.
+Project has been tested on Windows 7/8/Mac and on browsers Chrome/Firefox/IE.
 
 ## Technical Description
 
