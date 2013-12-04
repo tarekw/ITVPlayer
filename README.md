@@ -11,11 +11,9 @@ ITVPlayer is a simple JavaScript application that loads a single page with an in
 - Appropriate use of frameworks and bespoke code
 - Package/Dependency management
 
-## IMPORTANT NOTE
+## Important note
 
 This project has dependency on node (npm) and bower. To start, please install node and ruby (for compass) and execute the following commands: **npm install -g grunt-cli bower**, and then in the project directory: **npm install && bower install**
-
-A local dev server serving on http://localhost:9000 can then be started with **grunt serve**. To test the application, just point a browser to this url and you're good to go.
 
 ## Technical Description
 
@@ -26,3 +24,13 @@ ITVPlayer is be coded mostly using HTML5/Javascript/CSS3 using a set of tools/li
 * **Backbone JS** : Javscript MVC Framework
 * **Underscore** : Templating/utility engine for Backbone
 * **jQuery** : A utility library used by many
+
+## Usage
+
+A local dev server serving on http://localhost:9000 can then be started with **grunt serve**. To test the application, just point a browser to this url and you're good to go.
+
+## Todo
+
+## Screenshots
+
+<img src="https://github.com/tarekw/ITVPlayer/raw/master/screenshots/chrome-firefox-ie.png" height="500px" />
