@@ -30,7 +30,7 @@
                 assert.throw(function(){return ITV.Urls.getSearchUrl(function(){})}, /search term can only be a string/);
                 assert.throw(function(){return ITV.Urls.getSearchUrl([])}, /search term can only be a string/);
                 assert.throw(function(){return ITV.Urls.getSearchUrl(1)}, /search term can only be a string/);
-                assert.throw(function(){return ITV.Urls.getSearchUrl('/')}, /search term cannot contain a forward slash/);  // this would break the api call
+                assert.throw(function(){return ITV.Urls.getSearchUrl('aaa/aaa')}, /search term cannot contain a forward slash/);  // this would break the api call
             });
         });
     });

@@ -20,7 +20,7 @@ ITV.Urls = function() {
             throw "search term is too long";
           } else if (typeof searchTerm !== 'string') {
             throw "search term can only be a string";
-          } else if (searchTerm === '/') {
+          } else if (searchTerm.indexOf('/') !== -1) {
             throw "search term cannot contain a forward slash";
           }
 
