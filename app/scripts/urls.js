@@ -21,6 +21,8 @@ ITV.Urls = function() {
           } else if (typeof searchTerm !== 'string') {
             throw "search term can only be a string";
           } else if (searchTerm.indexOf('/') !== -1) {
+            // should url encode if we want to allow users to search
+            // for this or other special characers
             throw "search term cannot contain a forward slash";
           }
 
