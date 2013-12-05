@@ -1,4 +1,5 @@
 var ITV = ITV || {};
+ITV.LOG = true;
 
 ITV.app = {
 
@@ -7,18 +8,18 @@ ITV.app = {
 
         // create the necessary collections used in the app
         this.collections = {
-            searchCollection: new SearchCollection({})
+            searchCollection: new ITV.SearchCollection({})
         };
 
         // create the main views in the app, subviews are created
         // when required by the main view
         this.views = {
-            searchView: new SearchView({el: '#SearchView'})
+            searchView: new ITV.SearchView({el: '#SearchView'})
         };
 
         // instantiate the router for handling urls, currently
         // there is only one route
-        this.router = new AppRouter(this);
+        this.router = new ITV.AppRouter(this);
 
         // tell backbone to manage the history stack
         Backbone.history.start();

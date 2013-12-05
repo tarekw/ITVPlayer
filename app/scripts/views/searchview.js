@@ -4,7 +4,9 @@
 * input box for entering the search queries and also
 * the container for the search results.
 */
-var SearchView = Backbone.View.extend({
+var ITV = ITV || {};
+
+ITV.SearchView = Backbone.View.extend({
 
     searchTimer: null,
     searchTerm: null,
@@ -34,7 +36,7 @@ var SearchView = Backbone.View.extend({
         if(ITV.LOG) console.log('SearchView.startSearch');
         if (!this.searchView) {
             // instantiate the searchresultsview if it is not already created
-            this.searchView = new SearchResultsView({ collection: ITV.app.collections.searchCollection, el: '.resultArea' });
+            this.searchView = new ITV.SearchResultsView({ collection: ITV.app.collections.searchCollection, el: '.resultArea' });
         }
 
         if (this.searchTerm && this.searchTerm === $('input[id=searchField]').val()) {

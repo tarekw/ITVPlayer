@@ -1,5 +1,7 @@
 // Mapping urls into views and actions
-var AppRouter = Backbone.Router.extend({
+var ITV = ITV || {};
+
+ITV.AppRouter = Backbone.Router.extend({
 
     initialize : function(app) {
         this.app = app;

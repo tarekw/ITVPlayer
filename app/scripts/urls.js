@@ -1,5 +1,4 @@
 var ITV = ITV || {};
-ITV.LOG = true;
 
 ITV.Urls = function() {
     var API_ENDPOINT = "/api/";

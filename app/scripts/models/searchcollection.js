@@ -4,7 +4,9 @@
 * cleans up the result and makes it available to any views that
 * require the information
 */
-var SearchCollection = Backbone.Collection.extend({
+var ITV = ITV || {};
+
+ITV.SearchCollection = Backbone.Collection.extend({
 
     lastJqXhr: null,
     url: undefined,

@@ -3,7 +3,9 @@
 * the collection is updated, we create the desired template item
 * and append it to the container of this view.
 */
-var SearchResultsView = Backbone.View.extend({
+var ITV = ITV || {};
+
+ITV.SearchResultsView = Backbone.View.extend({
 
     initialize: function() {
         if(ITV.LOG) console.log('SearchResultsView.initialize');
@@ -27,7 +29,7 @@ var SearchResultsView = Backbone.View.extend({
         };
 
         var searchError = function() {
-            if(ITV.LOG) console.error('search error');
+            if(ITV.LOG) console.log('search error');
         };
 
         // ask the underlying collection to fetch the results. it could get the
