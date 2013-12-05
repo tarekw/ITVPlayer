@@ -13,7 +13,7 @@ ITVPlayer is a simple JavaScript application that loads a single page with an in
 
 ## Important note
 
-This project has dependency on node (npm), grunt and bower. To start, please install NodeJS (http://nodejs.org/download) and  ruby (for compass) and execute the following commands on a terminal/cmd prompt: **npm install -g grunt-cli bower**. Then in the project directory: **npm install && bower install**. This should download and install all the necessary dependencies into the project directory. Please note, these commands only need to be executed once.
+This project has dependency on node (npm), grunt, bower and ruby (for compass). To start, please install NodeJS (http://nodejs.org/download), compass (http://compass-style.org/install/) and execute the following commands on a terminal/cmd prompt: **npm install -g grunt-cli bower**. Then in the project directory: **npm install && bower install**. This should download and install all the necessary dependencies into the project directory. Please note, these commands only need to be executed once.
 
 ## Usage
 
