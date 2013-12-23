@@ -1,6 +1,6 @@
 var ITV = ITV || {};
 
-ITV.Urls = function() {
+ITV.Urls = (function() {
     var API_ENDPOINT = "/api/";
     var TARGET = "json";
     var PLATFORM = "dotcom";
@@ -34,4 +34,4 @@ ITV.Urls = function() {
                  searchTerm;
         }
     }
-}();
+}());
