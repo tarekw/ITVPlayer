@@ -37,8 +37,24 @@
     
     describe('Test the asynchronous functions /', function() {
         describe('Test the search collection /', function(){
+            // at the moment we only have one asynchronous function in the searchcollection
             it('data returned from fetch should be the correct format', function(done) {
-                var searchSuccess = function() {
+                var searchSuccess = function(model, response, options) {
+                    expect(response).to.be.a('Object');
+                    expect(response.Result).to.be.a('Array');
+
+                    // test that the response object contains the data we need
+                    if (response.Result.length > 0) {
+                        expect(response.Result[0].Details).to.be.a('Array');
+                        _.each(response.Result.Details, function(detail) {
+                            expect(detail.Programme).to.be.a('Object');
+                            expect(detail.Programme.ImageUri).to.be.a('String');
+                            expect(detail.Programme.Programme).to.not.be(undefined);
+                            expect(detail.Programme.Programme).to.not.be(null);
+                            expect(detail.Programme.Programme.Title).to.be.a('String');
+                            expect(detail.Programme.ShortSynopsis).to.be.a('String');
+                        });
+                    }
                     done();
                 };
 
@@ -54,6 +70,8 @@
                     searchTerm: 'a'
                 });
             });
+            // If the response object is changed in the collection, test them as well.
+            // at the moment, the response is used as is.
         });
     });
 })();
