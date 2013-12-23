@@ -1,9 +1,9 @@
 /*global describe, it to be or not to be!*/
 'use strict';
 (function () {
-    describe('Test the utility functions/', function () {
+    describe('Test the utility functions /', function () {
         // currently this is the only utility we have
-        describe('Test the utility functions in urls js/', function () {
+        describe('Test the utility functions in urls js /', function () {
             it('urls returned with valid search term should be the correct format', function () {
                 var url = ITV.Urls.getSearchUrl('a');
 
@@ -34,5 +34,26 @@
             });
         });
     });
-    // TODO add some asynchronous tests for the model/collection
+    
+    describe('Test the asynchronous functions /', function() {
+        describe('Test the search collection /', function(){
+            it('data returned from fetch should be the correct format', function(done) {
+                var searchSuccess = function() {
+                    done();
+                };
+
+                var searchError = function(model, response, options) {
+                    done(new Error(response.statusText));
+                };
+
+                var searchCollection = new ITV.SearchCollection({});
+
+                searchCollection.fetch( {
+                    success: searchSuccess,
+                    error: searchError,
+                    searchTerm: 'a'
+                });
+            });
+        });
+    });
 })();
