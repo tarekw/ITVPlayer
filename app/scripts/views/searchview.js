@@ -18,7 +18,7 @@ ITV.SearchView = Backbone.View.extend({
     initialize: function() {
         if(ITV.LOG) console.log('SearchView.initialize');
 
-        this.template = $("#searchViewTemplate").html();
+        this.template = JST["searchView.html"];
     },
 
     // overriding the base render to show custom template
@@ -26,7 +26,7 @@ ITV.SearchView = Backbone.View.extend({
         var that = this;
         if(ITV.LOG) console.log('SearchView.render');
 
-        this.$el.html(_.template(this.template,{}));
+        this.$el.html(this.template({}));
 
         return this;
     },

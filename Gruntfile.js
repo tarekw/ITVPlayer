@@ -29,6 +29,12 @@ module.exports = function (grunt) {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['compass:server', 'autoprefixer']
             },
+            jst: {
+                files: [
+                  '<%= yeoman.app %>/templates/**/*.html'
+                ],
+                tasks: ['jst']
+            },
             styles: {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
                 tasks: ['copy:styles', 'autoprefixer']
@@ -153,6 +159,22 @@ module.exports = function (grunt) {
                     debugInfo: true
                 }
             }
+        },
+        jst: {
+          compile: {
+            options: {
+              namespace: "JST",
+              processName: function(path) {
+                var parts = path.split("/");
+                return parts[parts.length-1];
+              }
+            },
+            files: {
+              '<%= yeoman.app %>/scripts/all-templates.js': [
+                '<%= yeoman.app %>/templates/**/*.html'
+              ],
+            }
+          }
         },
         autoprefixer: {
             options: {
@@ -326,6 +348,7 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'clean:server',
+            'jst',
             'configureProxies',
             'concurrent:server',
             'autoprefixer',
@@ -341,6 +364,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test', [
         'clean:server',
+        'jst',
         'configureProxies',
         'concurrent:test',
         'autoprefixer',

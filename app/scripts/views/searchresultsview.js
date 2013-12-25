@@ -9,7 +9,7 @@ ITV.SearchResultsView = Backbone.View.extend({
 
     initialize: function() {
         if(ITV.LOG) console.log('SearchResultsView.initialize');
-        this.template = $("#searchItemTemplate").html();
+        this.template = JST["searchItem.html"];
 
         this.collection.on("add", this.addResult, this);    // listen for changes to the collection
     },
@@ -44,7 +44,7 @@ ITV.SearchResultsView = Backbone.View.extend({
     // handle changes in the collection
     addResult: function(model) {
         if(ITV.LOG) console.log('SearchResultsView.addResult ', model);
-        this.$el.append(_.template(this.template,model.toJSON()));
+        this.$el.append(this.template(model.toJSON()));
     }
 
 });
