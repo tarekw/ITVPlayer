@@ -35,11 +35,11 @@ ITVPlayer is coded mostly in HTML5/JavaScript/CSS3 using a set of tools/librarie
 
 ## Improvements
 
-* Add some more tests for validating the collection/model
+* Add some more tests for validating the collection/model - DONE
 * Do some DOM testing with phantomJS
 * If project expands, might consider moving to a more composite application architecture
 * Test the grunt build scripts to build a package for deployment on the live server
-* Separate the templates from the index
+* Separate the templates from the index - DONE
 * Set up continuous integration (e.g. with Jenkins)
 
 ## Screenshots
