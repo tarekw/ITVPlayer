@@ -22,7 +22,8 @@ module.exports = function (grunt) {
         // configurable paths
         yeoman: {
             app: 'app',
-            dist: 'dist'
+            dist: 'dist',
+            test: 'test'
         },
         watch: {
             compass: {
@@ -88,6 +89,17 @@ module.exports = function (grunt) {
                           proxySnippet,
                           mountFolder(connect, '.tmp'),
                           mountFolder(connect, 'test'),
+                          mountFolder(connect, 'app')
+                        ];
+                    }
+                }
+            },
+            testcuke: {
+                options: {
+                    middleware: function (connect) {
+                        return [
+                          proxySnippet,
+                          mountFolder(connect, '.tmp'),
                           mountFolder(connect, 'app')
                         ];
                     }
@@ -338,6 +350,12 @@ module.exports = function (grunt) {
                 'svgmin',
                 'htmlmin'
             ]
+        },
+        cucumberjs: {
+            src: '<%= yeoman.test %>/features',
+            options: {
+                steps: '<%= yeoman.test %>/features/step_definitions'
+            }
         }
     });
 
@@ -361,6 +379,16 @@ module.exports = function (grunt) {
       grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
       grunt.task.run(['serve']);
     });
+
+    grunt.registerTask('cucumber', [
+        'clean:server',
+        'jst',
+        'configureProxies',
+        'concurrent:server',
+        'autoprefixer',
+        'connect:testcuke',
+        'cucumberjs'
+    ]);
 
     grunt.registerTask('test', [
         'clean:server',
