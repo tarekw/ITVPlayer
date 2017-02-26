@@ -3,9 +3,15 @@ var Card = React.createClass({
     if (this.props.data) {
       return (
         <div>
-          <h3>{this.props.data.Programme.Programme.Title}</h3>
-          <img src={this.props.data.Programme.ImageUri} />
-          <hr/>
+          <table className="table table-bordered table-hover">
+              <tr>
+                  <td><img className="img-rounded" src={this.props.data.Programme.ImageUri}/></td>
+                  <td>
+                      <b>{this.props.data.Programme.Programme.Title}</b>
+                      <div>{this.props.data.Programme.ShortSynopsis}</div>
+                  </td>
+              </tr>
+          </table>
         </div>
       );
     } else {
@@ -20,9 +26,9 @@ var SearchInput = React.createClass({
   },
   render: function () {
     return (
-      <div>
+      <div className="header">
         <br/>
-        <input placeholder='enter your search term' ref="searchInput" onChange={this.handleOnChange}></input>
+        <input className="searchbox form-control" placeholder='enter your search term' ref="searchInput" onChange={this.handleOnChange}></input>
       </div>
     );
   }
@@ -51,8 +57,9 @@ var Main = React.createClass({
     return (
       <div>
         <SearchInput searchItems={this.searchItems}/>
-        <hr/>
-        {cards}
+        <div className="resultArea">
+          {cards}
+        </div>
       </div>
     );
   }

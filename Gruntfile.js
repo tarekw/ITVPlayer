@@ -31,6 +31,10 @@ module.exports = function (grunt) {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['compass:server', 'autoprefixer']
             },
+            compassReact: {
+                files: ['<%= yeoman.react %>/styles/{,*/}*.{scss,sass}'],
+                tasks: ['compass:react', 'autoprefixer:react']
+            },
             jst: {
                 files: [
                   '<%= yeoman.app %>/templates/**/*.html'
@@ -53,6 +57,7 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/*.html',
                     '<%= yeoman.react %>/*.html',
                     '.tmp/styles/{,*/}*.css',
+                    '<%= yeoman.react %>/styles/{,*/}*.css',
                     '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
                     '{.tmp,<%= yeoman.react %>}/{,*/}*.js',
                     '<%= yeoman.app %>/images/{,*/}*.{gif,jpeg,jpg,png,svg,webp}'
@@ -193,6 +198,12 @@ module.exports = function (grunt) {
                 options: {
                     debugInfo: true
                 }
+            },
+            react: {
+                options: {
+                    sassDir: '<%= yeoman.react %>/styles',
+                    cssDir: '<%= yeoman.react %>/styles'
+                }
             }
         },
         jst: {
@@ -221,6 +232,14 @@ module.exports = function (grunt) {
                     cwd: '.tmp/styles/',
                     src: '{,*/}*.css',
                     dest: '.tmp/styles/'
+                }]
+            },
+            react: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= yeoman.react %>/styles/',
+                    src: '{,*/}*.css',
+                    dest: '<%= yeoman.react %>/styles/'
                 }]
             }
         },
@@ -364,7 +383,8 @@ module.exports = function (grunt) {
                 'copy:styles'
             ],
             react: [
-                'babel'
+                'compass:react',
+                'autoprefixer:react'
             ],
             test: [
                 'copy:styles'
@@ -419,20 +439,9 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean:server',
             'compileReact',
-            'configureProxies',
-            'concurrent:server',
             'concurrent:react',
-            'autoprefixer',
             'connect:react',
             'watch'
-        ]);
-    });
-
-    grunt.registerTask('react', function (target) {
-
-        grunt.task.run([
-            'connect:react',
-            'watch:react'
         ]);
     });
 
