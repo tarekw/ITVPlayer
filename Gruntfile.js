@@ -22,6 +22,7 @@ module.exports = function (grunt) {
         // configurable paths
         yeoman: {
             app: 'app',
+            react: 'react',
             dist: 'dist',
             test: 'test'
         },
@@ -40,14 +41,20 @@ module.exports = function (grunt) {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
                 tasks: ['copy:styles', 'autoprefixer']
             },
+            jsx: {
+                files: ['{.tmp,<%= yeoman.react %>}/{,*/}*.jsx'],
+                tasks: ['babel']
+            },
             livereload: {
                 options: {
                     livereload: '<%= connect.options.livereload %>'
                 },
                 files: [
                     '<%= yeoman.app %>/*.html',
+                    '<%= yeoman.react %>/*.html',
                     '.tmp/styles/{,*/}*.css',
                     '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
+                    '{.tmp,<%= yeoman.react %>}/{,*/}*.js',
                     '<%= yeoman.app %>/images/{,*/}*.{gif,jpeg,jpg,png,svg,webp}'
                 ]
             }
@@ -78,6 +85,22 @@ module.exports = function (grunt) {
                             proxySnippet,
                             mountFolder(connect, '.tmp'),
                             mountFolder(connect, 'app')
+                        ];
+                    }
+                }
+            },
+            react: {
+                options: {
+                    open: true,
+                    base: [
+                        '.tmp',
+                        '<%= yeoman.react %>'
+                    ],
+                    middleware: function (connect) {
+                        return [
+                            proxySnippet,
+                            mountFolder(connect, '.tmp'),
+                            mountFolder(connect, 'react')
                         ];
                     }
                 }
@@ -340,6 +363,9 @@ module.exports = function (grunt) {
                 'compass',
                 'copy:styles'
             ],
+            react: [
+                'babel'
+            ],
             test: [
                 'copy:styles'
             ],
@@ -356,8 +382,21 @@ module.exports = function (grunt) {
             options: {
                 steps: '<%= yeoman.test %>/features/step_definitions'
             }
+        },
+        babel: {
+            options: {
+                sourceMap: true,
+                presets: ['react']
+            },
+            dist: {
+                files: {
+                    'react/script.js': 'react/script.jsx'
+                }
+            }
         }
     });
+
+    grunt.registerTask('compileReact', ['babel']);
 
     grunt.registerTask('serve', function (target) {
         if (target === 'dist') {
@@ -372,6 +411,28 @@ module.exports = function (grunt) {
             'autoprefixer',
             'connect:livereload',
             'watch'
+        ]);
+    });
+
+    grunt.registerTask('serveReact', function (target) {
+
+        grunt.task.run([
+            'clean:server',
+            'compileReact',
+            'configureProxies',
+            'concurrent:server',
+            'concurrent:react',
+            'autoprefixer',
+            'connect:react',
+            'watch'
+        ]);
+    });
+
+    grunt.registerTask('react', function (target) {
+
+        grunt.task.run([
+            'connect:react',
+            'watch:react'
         ]);
     });
 
