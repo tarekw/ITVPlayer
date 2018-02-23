@@ -1,7 +1,5 @@
 const constants = {
-    UPDATE: "UPDATE",
-    FETCH_SEARCH_RESULTS: "FETCH_SEARCH_RESULTS",
-	CANCEL_FETCHING: "CANCEL_FETCHING"
+    UPDATE_RESULTS: "UPDATE_RESULTS"
 };
 
 export default constants

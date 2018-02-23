@@ -1,4 +1,4 @@
-let OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
     entry: "./src/index.js",
@@ -46,4 +46,4 @@ module.exports = {
             canPrint: true
         })
     ]
-};
+}

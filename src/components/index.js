@@ -1,14 +1,11 @@
-import Menu from './ui/Menu'
-import ShowErrors from './containers/ShowErrors'
-import GoalProgress from './containers/GoalProgress'
-import '../stylesheets/index.scss'
+import SearchInput from './containers/SearchInput'
+import Results from './containers/Results'
+import '../stylesheets/main.scss'
 
-export const App = ({children}) =>
+export const App = () =>
     <div className="app">
-        <ShowErrors />
-        {children}
-        <GoalProgress />
-        <Menu />
+        <SearchInput />
+        <Results />
     </div>
 
 export const Whoops404 = ({ location }) =>

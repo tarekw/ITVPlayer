@@ -10,12 +10,12 @@ const consoleMessages = store => next => action => {
 	console.groupCollapsed(`dispatching action => ${action.type}`);
 	result = next(action);
 
-	let { updateSearchResults, fetching } = store.getState();
+	let { allSearchResults } = store.getState();
 
+	console.log('-------------', allSearchResults);
 	console.log(`
 
-		search results: ${updateSearchResults.length}
-		fetching: ${fetching}
+		search results: ${allSearchResults.Details.length}
 
 	`);
 
