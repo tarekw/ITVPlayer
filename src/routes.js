@@ -1,7 +1,6 @@
 import React from 'react'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import { App, Whoops404 } from './components'
-// import SkiDayCount from './components/containers/SkiDayCount'
 
 const routes = (
     <Router history={hashHistory}>

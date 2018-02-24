@@ -8,6 +8,11 @@ export const allSearchResults = (state=[], action) => {
     case C.UPDATE_RESULTS:
       return action.payload;
 
+    case C.CLEAR_RESULTS:
+      return {
+        Details: []
+      };
+
     default:
       return state;
   }

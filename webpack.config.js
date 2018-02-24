@@ -7,6 +7,7 @@ module.exports = {
         filename: "bundle.js",
         publicPath: "assets"
     },
+    watch: true,
     devServer: {
         inline: true,
         contentBase: './dist',

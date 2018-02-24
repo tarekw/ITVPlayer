@@ -1,6 +1,11 @@
 import C from './constants'
 import fetch from 'isomorphic-fetch'
 
+export const clearResults = () => 
+    ({
+        type: C.CLEAR_RESULTS
+    })
+
 export const searchResults = value => dispatch => {
 
     fetch('http://mercury.itv.com/api/json/dotcom/programme/searchatoz/' + value)

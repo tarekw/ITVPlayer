@@ -1,7 +1,7 @@
 import SearchInput from '../ui/SearchInput'
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
-import { searchResults } from '../../actions'
+import { searchResults, clearResults } from '../../actions'
 
 const mapStateToProps = (state, props) => 
 	({
@@ -16,9 +16,9 @@ const mapDispatchToProps = dispatch =>
 					searchResults(value)
 				)
 			} else {
-				// dispatch(
-				// 	clearSuggestions()
-				// )
+				dispatch(
+					clearResults()
+				)
 			}
 		},
 	})	
